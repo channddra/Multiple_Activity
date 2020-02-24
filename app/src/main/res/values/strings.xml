@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Multiple Activity</string>
+    <string name="label_name">Name</string>
+    <string name="button_next">Next</string>
+    <string name="label_address">Address</string>
+    <string name="button_prev">Previous</string>
+    <string name="label_dob">Date of Birth</string>
+</resources>
