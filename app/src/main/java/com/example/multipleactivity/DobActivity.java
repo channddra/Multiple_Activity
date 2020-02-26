@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 
 public class DobActivity extends AppCompatActivity {
     String name, address, date;
@@ -21,22 +22,24 @@ public class DobActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra(Data.NAME_TEXT);
         address = intent.getStringExtra(Data.ADDRESS_TEXT);
-        simpleCalendarView = (CalendarView) findViewById(R.id.calendarView); // get the reference of CalendarView
-        // perform setOnDateChangeListener event on CalendarView
-        simpleCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                // display the selected date by using a toast
-                y = year;
-                m = month;
-                d = dayOfMonth;
-                date = d + "/" + (m+1) + "/" + y;
-            }
-        });
+        DatePicker dp = findViewById(R.id.datePicker1);
+        dp.updateDate(1990, 1, 1);
     }
 
     public void goToNext(View view){
         Intent intent = new Intent(this, summaryActivity.class);
+        DatePicker dp = findViewById(R.id.datePicker1);
+
+        y = dp.getYear();
+        m = dp.getMonth()+1;
+        d = dp.getDayOfMonth();
+
+        if(d<10) date = "0" + d;
+        else date = "" + d;
+
+        if(m<10) date += "-0" + m + "-" + y;
+        else date += "-" + m + "-" + y;
+
         intent.putExtra(Data.NAME_TEXT, name);
         intent.putExtra(Data.ADDRESS_TEXT, address);
         intent.putExtra(Data.DATE_TEXT, date);
