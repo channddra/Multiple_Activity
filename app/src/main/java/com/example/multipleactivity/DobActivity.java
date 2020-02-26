@@ -7,12 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 
 public class DobActivity extends AppCompatActivity {
     String name, address, date;
-    CalendarView simpleCalendarView;
     int y, m, d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
